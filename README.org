@@ -1,6 +1,8 @@
 * SRFI-74: Octet-Addressed Binary Blocks
 ** Abstract
 This SRFI defines a set of procedures for creating, accessing, and manipulating octet-addressed blocks of binary data, in short, blobs. The SRFI provides access primitives for fixed-length integers of arbitrary size, with specified endianness, and a choice of unsigned and two's complement representations.
+
+For more information see: [[https://srfi.schemers.org/srfi-74/][SRFI-74: Octet-Addressed Binary Blocks]]
 ** Rationale
 Many applications must deal with blocks of binary data by accessing them in various ways---extracting signed or unsigned numbers of various sizes. Such an application can use octet vectors as in SRFI 66 or any of the other types of homogeneous vectors in SRFI 4, but these both only allow retrieving the binary data of one type.
 
