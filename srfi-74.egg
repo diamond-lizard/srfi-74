@@ -1,0 +1,11 @@
+;;; srfi-74.egg -*- Scheme -*- vim: ft=scheme:
+
+((author "Michael Sperber")
+ (maintainer "Sergey Goldgaber")
+ (synopsis "SRFI-74: Octet-Addressed Binary Blocks")
+ (version "0.1")
+ (category data)
+ (dependencies srfi-60 srfi-66)
+ (test-dependencies test)
+ (license "MIT")
+ (components (extension srfi-74)))
