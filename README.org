@@ -1,64 +1,28 @@
-Title
+* SRFI-74: Octet-Addressed Binary Blocks
+** Abstract
+This SRFI defines a set of procedures for creating, accessing, and manipulating octet-addressed blocks of binary data, in short, blobs. The SRFI provides access primitives for fixed-length integers of arbitrary size, with specified endianness, and a choice of unsigned and two's complement representations.
+** Rationale
+Many applications must deal with blocks of binary data by accessing them in various ways---extracting signed or unsigned numbers of various sizes. Such an application can use octet vectors as in SRFI 66 or any of the other types of homogeneous vectors in SRFI 4, but these both only allow retrieving the binary data of one type.
 
-Octet-Addressed Binary Blocks
+This is awkward in many situations, because an application might access different kinds of entities from a single binary block. Even for uniform blocks, the disjointness of the various vector data types in SRFI 4 means that, say, an I/O API needs to provide an army of procedures for each of them in order to provide efficient access to binary data.
 
-Authors
-
-Michael Sperber
-
-Status
-
-This SRFI is currently in final status. Here is an explanation of each status that a SRFI can hold. To provide input on this SRFI, please send email to srfi-74@nospam
-srfi.schemers.org. To subscribe to the list, follow these instructions. You can access previous messages via the mailing list archive.
-
-  * Received: 2005-07-06
-  * Draft: 2005-07-06--2005-09-04
-  * Revised: 2005-07-22
-  * Revised: 2005-12-04
-  * Final: 2005-12-15
-
-Abstract
-
-This SRFI defines a set of procedures for creating, accessing, and manipulating octet-addressed blocks of binary data, in short, blobs. The SRFI provides access primitives
-for fixed-length integers of arbitrary size, with specified endianness, and a choice of unsigned and two's complement representations.
-
-Rationale
-
-Many applications must deal with blocks of binary data by accessing them in various ways---extracting signed or unsigned numbers of various sizes. Such an application can
-use octet vectors as in SRFI 66 or any of the other types of homogeneous vectors in SRFI 4, but these both only allow retrieving the binary data of one type.
-
-This is awkward in many situations, because an application might access different kinds of entities from a single binary block. Even for uniform blocks, the disjointness
-of the various vector data types in SRFI 4 means that, say, an I/O API needs to provide an army of procedures for each of them in order to provide efficient access to
-binary data.
-
-Therefore, this SRFI provides a single type for blocks of binary data with multiple ways to access that data. It deals only with integers in various sizes with specified
-endianness, because these are the most frequent applications. Dealing with other kinds of binary data, such as floating-point numbers or variable-size integers would be
-natural extensions, but are left for a future SRFI.
-
-Specification
-
-General remarks
-
+Therefore, this SRFI provides a single type for blocks of binary data with multiple ways to access that data. It deals only with integers in various sizes with specified endianness, because these are the most frequent applications. Dealing with other kinds of binary data, such as floating-point numbers or variable-size integers would be natural extensions, but are left for a future SRFI.
+** Specification
+*** General remarks
 Blobs are objects of a new type. Conceptually, a blob represents a sequence of octets.
 
 Scheme systems implementing both SRFI 4 and/or SRFI 66 and this SRFI may or may not use the same type for u8vector and blobs. They are encouraged to do so, however.
 
-As with u8vectors, the length of a blob is the number of octets it contains. This number is fixed. A valid index into a blob is an exact, non-negative integer. The first
-octet of a blob has index 0, the last octet has an index one less than the length of the blob.
+As with u8vectors, the length of a blob is the number of octets it contains. This number is fixed. A valid index into a blob is an exact, non-negative integer. The first octet of a blob has index 0, the last octet has an index one less than the length of the blob.
 
-Generally, the access procedures come in different flavors according to the size of the represented integer, and the endianness of the representation. The procedures also
-distinguish signed and unsigned representations. The signed representations all use two's complement.
+Generally, the access procedures come in different flavors according to the size of the represented integer, and the endianness of the representation. The procedures also distinguish signed and unsigned representations. The signed representations all use two's complement.
 
 For procedures that have no "natural" return value, this SRFI often uses the sentence
 
 The return values are unspecified.
 
-This means that number of return values and the return values are unspecified. However, the number of return values is such that it is accepted by a continuation created
-by begin. Specifically, on Scheme implementations where continuations created by begin accept an arbitrary number of arguments (this includes most implementations), it is
-suggested that the procedure return zero return values.
-
-Interface
-
+This means that number of return values and the return values are unspecified. However, the number of return values is such that it is accepted by a continuation created by begin. Specifically, on Scheme implementations where continuations created by begin accept an arbitrary number of arguments (this includes most implementations), it is suggested that the procedure return zero return values.
+*** Interface
 (endianness big) (syntax)
 (endianness little) (syntax)
 (endianness native) (syntax)
@@ -202,39 +166,24 @@ Interface
 (uint-list->blob size endianness list)
 (sint-list->blob size endianness list)
 
-    Size must be a positive exact integer. Endianness must be an endianness object.
+Size must be a positive exact integer. Endianness must be an endianness object.
 
-    These convert between lists of integers and their consecutive representations according to size and endianness in blobs in the same way as blob->u8-list, blob->
-    s8-list, u8-list->blob, and s8-list->blob do for one-octet representations.
-
-Reference Implementation
-
-This reference implementation makes use of SRFI 23 (Error reporting mechanism), SRFI 26 (Notation for Specializing Parameters without Currying), SRFI 60 (Integers as
-Bits), and SRFI 66 (Octet Vectors) .
-
-Examples
-
+These convert between lists of integers and their consecutive representations according to size and endianness in blobs in the same way as blob->u8-list, blob->s8-list, u8-list->blob, and s8-list->blob do for one-octet representations.
+** Reference Implementation
+This reference implementation makes use of SRFI 23 (Error reporting mechanism), SRFI 26 (Notation for Specializing Parameters without Currying), SRFI 60 (Integers as Bits), and SRFI 66 (Octet Vectors) .
+** Examples
 The test suite doubles as a source of examples.
-
-References
-
+** References
   * SRFI 4 (Homogeneous numeric vector datatypes)
   * SRFI 56 (Binary I/O)
   * SRFI 66 (Octet Vectors)
-
-Copyright
-
+** Authors
+ * Michael Sperber
+** Copyright
 Copyright (C) Michael Sperber (2005). All Rights Reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software
-without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Editor: David Van Horn
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
