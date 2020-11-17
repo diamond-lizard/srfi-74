@@ -180,9 +180,9 @@ Returns a newly allocated copy of blob blob.
 
 <procedure>(u8-list->blob blob)</procedure>
 
-blob->u8-listreturns a newly allocated list of the octets of blob in the same order.
+{{blob->u8-listreturns}} a newly allocated list of the octets of blob in the same order.
 
-U8-list->blob returns a newly allocated blob whose elements are the elements of list octets, which must all be octets, in the same order. Analogous to list->vector.
+{{U8-list->blob}} returns a newly allocated blob whose elements are the elements of list octets, which must all be octets, in the same order. Analogous to {{list->vector}}.
 
 <procedure>(blob->uint-list size endianness blob)</procedure>
 
@@ -194,7 +194,7 @@ U8-list->blob returns a newly allocated blob whose elements are the elements of 
 
 Size must be a positive exact integer. Endianness must be an endianness object.
 
-These convert between lists of integers and their consecutive representations according to size and endianness in blobs in the same way as blob->u8-list, blob->s8-list, u8-list->blob, and s8-list->blob do for one-octet representations.
+These convert between lists of integers and their consecutive representations according to size and endianness in blobs in the same way as {{blob->u8-list}}, {{blob->s8-list}}, u8-{{list->blob}}, and {{s8-list->blob}} do for one-octet representations.
 === Examples
 The [[https://srfi.schemers.org/srfi-74/example.scm|test suite]] doubles as a source of examples.
 === References
