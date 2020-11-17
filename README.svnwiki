@@ -193,12 +193,12 @@ These convert between lists of integers and their consecutive representations ac
 === Examples
 The [[https://srfi.schemers.org/srfi-74/example.scm|test suite]] doubles as a source of examples.
 === References
- * [[http://srfi.schemers.org/srfi-4/|SRFI 4]] (Homogeneous numeric vector datatypes)
- * [[http://srfi.schemers.org/srfi-56/|SRFI 56]] (Binary I/O)
- * [[http://srfi.schemers.org/srfi-66/|SRFI 66]] (Octet Vectors)
+* [[http://srfi.schemers.org/srfi-4/|SRFI 4]] (Homogeneous numeric vector datatypes)
+* [[http://srfi.schemers.org/srfi-56/|SRFI 56]] (Binary I/O)
+* [[http://srfi.schemers.org/srfi-66/|SRFI 66]] (Octet Vectors)
 === Authors
- * Michael Sperber
- * Ported to Chicken 5 by Sergey Goldgaber
+* Michael Sperber
+* Ported to Chicken 5 by Sergey Goldgaber
 === Copyright
 Copyright (C) Michael Sperber (2005). All Rights Reserved.
 
@@ -208,5 +208,5 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 === Version history
- * [[https://github.com/diamond-lizard/srfi-74/releases/tag/0.1|0.1]] - Ported to Chicken Scheme 5
+* [[https://github.com/diamond-lizard/srfi-74/releases/tag/0.1|0.1]] - Ported to Chicken Scheme 5
 
