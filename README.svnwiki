@@ -25,36 +25,32 @@ The return values are unspecified.
 
 This means that number of return values and the return values are unspecified. However, the number of return values is such that it is accepted by a continuation created by begin. Specifically, on Scheme implementations where continuations created by begin accept an arbitrary number of arguments (this includes most implementations), it is suggested that the procedure return zero return values.
 ==== Interface
-<enscript highlight="scheme">
-(endianness big) (syntax)
-(endianness little) (syntax)
-(endianness native) (syntax)
-</enscript>
+
+<syntax>(endianness big)</syntax>
+
+
+<syntax>(endianness little)</syntax>
+
+
+<syntax>(endianness native)</syntax>
 
 (endianness big) and (endianness little) evaluate to two distinct and unique objects representing an endianness. The native endianness evaluates to the endianness of the underlying machine architecture, and must be eq? to either (endianness big) or (endianness little).
 
-<enscript highlight="scheme">
-(blob? obj)
-</enscript>
+<procedure>(blob? obj)</procedure>
 
 Returns #t if obj is a blob, otherwise returns #f.
 
-<enscript highlight="scheme">
-(make-blob k)
-</enscript>
+<procedure>(make-blob k)</procedure>
 
 Returns a newly allocated blob of k octets, all of them 0.
 
-<enscript highlight="scheme">
-(blob-length blob)
-</enscript>
+<procedure>(blob-length blob)</procedure>
 
 Returns the number of octets in blob as an exact integer.
 
-<enscript highlight="scheme">
-(blob-u8-ref blob k)
-(blob-s8-ref blob k)
-</enscript>
+<procedure>(blob-u8-ref blob k)</procedure>
+
+<procedure>(blob-s8-ref blob k)</procedure>
 
 K must be a valid index of blob.
 
@@ -62,10 +58,10 @@ Blob-u8-ref returns the octet at index k of blob.
 
 Blob-s8-ref returns the exact integer corresponding to the two's complement representation at index k of blob.
 
-<enscript highlight="scheme">
-(blob-u8-set! blob k octet)
-(blob-s8-set! blob k byte)
-</enscript>
+<procedure>(blob-u8-set! blob k octet)</procedure>
+
+<procedure>(blob-s8-set! blob k byte)</procedure>
+
 
 K must be a valid index of blob.
 
@@ -75,12 +71,13 @@ Byte, must be an exact integer in the interval {-128, ..., 127}. Blob-u8-set! st
 
 The return values are unspecified.
 
-<enscript highlight="scheme">
-(blob-uint-ref size endianness blob k)
-(blob-sint-ref size endianness blob k)
-(blob-uint-set! size endianness blob k n)
-(blob-sint-set! size endianness blob k n)
-</enscript>
+<procedure>(blob-uint-ref size endianness blob k)</procedure>
+
+<procedure>(blob-sint-ref size endianness blob k)</procedure>
+
+<procedure>(blob-uint-set! size endianness blob k n)</procedure>
+
+<procedure>(blob-sint-set! size endianness blob k n)</procedure>
 
 Size must be a positive exact integer. K must be a valid index of blob; so must the indices {k, ..., k + size - 1}. Endianness must be an endianness object.
 
@@ -92,16 +89,21 @@ For blob-uint-set!, n must be an exact integer in the interval [0, (256^size)-1]
 
 For blob-uint-set!, n must be an exact integer in the interval [-256^(size-1), (256^(size-1))-1]. Blob-sint-set! stores the two's complement representation of size size and specified by endianness into the blob at indices {k, ..., k + size - 1}.
 
-<enscript highlight="scheme">
-(blob-u16-ref endianness blob k)
-(blob-s16-ref endianness blob k)
-(blob-u16-native-ref blob k)
-(blob-s16-native-ref blob k)
-(blob-u16-set! endianness blob k n)
-(blob-s16-set! endianness blob k n)
-(blob-u16-native-set! blob k n)
-(blob-s16-native-set! blob k n)
-</enscript>
+<procedure>(blob-u16-ref endianness blob k)</procedure>
+
+<procedure>(blob-s16-ref endianness blob k)</procedure>
+
+<procedure>(blob-u16-native-ref blob k)</procedure>
+
+<procedure>(blob-s16-native-ref blob k)</procedure>
+
+<procedure>(blob-u16-set! endianness blob k n)</procedure>
+
+<procedure>(blob-s16-set! endianness blob k n)</procedure>
+
+<procedure>(blob-u16-native-set! blob k n)</procedure>
+
+<procedure>(blob-s16-native-set! blob k n)</procedure>
 
 K must be a valid index of blob; so must the index k+ 1. Endianness must be an endianness object.
 
@@ -109,16 +111,21 @@ These retrieve and set two-octet representations of numbers at indices k and k+1
 
 The procedures with native in their names employ the native endianness, and only work at aligned indices: k must be a multiple of 2. It is an error to use them at non-aligned indices.
 
-<enscript highlight="scheme">
-(blob-u32-ref endianness blob k)
-(blob-s32-ref endianness blob k)
-(blob-u32-native-ref blob k)
-(blob-s32-native-ref blob k)
-(blob-u32-set! endianness blob k n)
-(blob-s32-set! endianness blob k n)
-(blob-u32-native-set! blob k n)
-(blob-s32-native-set! blob k n)
-</enscript>
+<procedure>(blob-u32-ref endianness blob k)</procedure>
+
+<procedure>(blob-s32-ref endianness blob k)</procedure>
+
+<procedure>(blob-u32-native-ref blob k)</procedure>
+
+<procedure>(blob-s32-native-ref blob k)</procedure>
+
+<procedure>(blob-u32-set! endianness blob k n)</procedure>
+
+<procedure>(blob-s32-set! endianness blob k n)</procedure>
+
+<procedure>(blob-u32-native-set! blob k n)</procedure>
+
+<procedure>(blob-s32-native-set! blob k n)</procedure>
 
 K must be a valid index of blob; so must the indices {k, ..., k+ 3}. Endianness must be an endianness object.
 
@@ -126,16 +133,21 @@ These retrieve and set four-octet representations of numbers at indices {k, ...,
 
 The procedures with native in their names employ the native endianness, and only work at aligned indices: k must be a multiple of 4. It is an error to use them at non-aligned indices.
 
-<enscript highlight="scheme">
-(blob-u64-ref endianness blob k)
-(blob-s64-ref endianness blob k)
-(blob-u64-native-ref blob k)
-(blob-s64-native-ref blob k)
-(blob-u64-set! endianness blob k n)
-(blob-s64-set! endianness blob k n)
-(blob-u64-native-set! blob k n)
-(blob-s64-native-set! blob k n)
-</enscript>
+<procedure>(blob-u64-ref endianness blob k)</procedure>
+
+<procedure>(blob-s64-ref endianness blob k)</procedure>
+
+<procedure>(blob-u64-native-ref blob k)</procedure>
+
+<procedure>(blob-s64-native-ref blob k)</procedure>
+
+<procedure>(blob-u64-set! endianness blob k n)</procedure>
+
+<procedure>(blob-s64-set! endianness blob k n)</procedure>
+
+<procedure>(blob-u64-native-set! blob k n)</procedure>
+
+<procedure>(blob-s64-native-set! blob k n)</procedure>
 
 K must be a valid index of blob; so must the indices {k, ..., k+ 7}. Endianness must be an endianness object.
 
@@ -143,15 +155,11 @@ These retrieve and set eight-octet representations of numbers at indices {k, ...
 
 The procedures with native in their names employ the native endianness, and only work at aligned indices: k must be a multiple of 8. It is an error to use them at non-aligned indices.
 
-<enscript highlight="scheme">
-(blob=? blob-1 blob-2)
-</enscript>
+<procedure>(blob=? blob-1 blob-2)</procedure>
 
 Returns #t if blob-1 and blob-2 are equal---that is, if they have the same length and equal octets at all valid indices.
 
-<enscript highlight="scheme">
-(blob-copy! source source-start target target-start n)
-</enscript>
+<procedure>(blob-copy! source source-start target target-start n)</procedure>
 
 Copies data from blob source to blob target. Source-start, target-start, and n must be non-negative exact integers that satisfy
 
@@ -165,27 +173,25 @@ This must work even if the memory regions for the source and the target overlap,
 
 The return values are unspecified.
 
-<enscript highlight="scheme">
-(blob-copy blob)
-</enscript>
+<procedure>(blob-copy blob)</procedure>
 
 Returns a newly allocated copy of blob blob.
 
-<enscript highlight="scheme">
-(blob->u8-list blob)
-(u8-list->blob blob)
-</enscript>
+<procedure>(blob->u8-list blob)</procedure>
+
+<procedure>(u8-list->blob blob)</procedure>
 
 blob->u8-listreturns a newly allocated list of the octets of blob in the same order.
 
 U8-list->blob returns a newly allocated blob whose elements are the elements of list octets, which must all be octets, in the same order. Analogous to list->vector.
 
-<enscript highlight="scheme">
-(blob->uint-list size endianness blob)
-(blob->sint-list size endianness blob)
-(uint-list->blob size endianness list)
-(sint-list->blob size endianness list)
-</enscript>
+<procedure>(blob->uint-list size endianness blob)</procedure>
+
+<procedure>(blob->sint-list size endianness blob)</procedure>
+
+<procedure>(uint-list->blob size endianness list)</procedure>
+
+<procedure>(sint-list->blob size endianness list)</procedure>
 
 Size must be a positive exact integer. Endianness must be an endianness object.
 
