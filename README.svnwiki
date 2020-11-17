@@ -78,7 +78,7 @@ The return values are unspecified.
 
 <procedure>(blob-sint-set! size endianness blob k n)</procedure>
 
-Size must be a positive exact integer. {{K}} must be a valid index of blob; so must the indices {k, ..., k + size - 1}. {{Endianness}} must be an endianness object.
+Size must be a positive exact integer. {{K}} must be a valid index of blob; so must the indices {k, ..., k + size - 1}. {{Endianness}} must be an {{endianness}} object.
 
 {{Blob-uint-ref}} retrieves the exact integer corresponding to the unsigned representation of size size and specified by endianness at indices {k, ..., k + size - 1}.
 
