@@ -54,20 +54,19 @@ Returns the number of octets in blob as an exact integer.
 
 {{K}} must be a valid index of {{blob}}.
 
-Blob-u8-ref returns the octet at index k of blob.
+{{Blob-u8-ref}} returns the octet at index k of blob.
 
-Blob-s8-ref returns the exact integer corresponding to the two's complement representation at index k of blob.
+{{Blob-s8-ref}} returns the exact integer corresponding to the two's complement representation at index {{k}} of blob.
 
 <procedure>(blob-u8-set! blob k octet)</procedure>
 
 <procedure>(blob-s8-set! blob k byte)</procedure>
 
+{{K}} must be a valid index of blob.
 
-K must be a valid index of blob.
+{{Blob-u8-set!}} stores octet in element {{k}} of blob.
 
-Blob-u8-set! stores octet in element k of blob.
-
-Byte, must be an exact integer in the interval {-128, ..., 127}. Blob-u8-set! stores the two's complement representation of byte in element k of blob.
+Byte, must be an exact integer in the interval {-128, ..., 127}. {{Blob-u8-set!}} stores the two's complement representation of byte in element {{k}} of blob.
 
 The return values are unspecified.
 
@@ -79,15 +78,15 @@ The return values are unspecified.
 
 <procedure>(blob-sint-set! size endianness blob k n)</procedure>
 
-Size must be a positive exact integer. K must be a valid index of blob; so must the indices {k, ..., k + size - 1}. Endianness must be an endianness object.
+Size must be a positive exact integer. {{K}} must be a valid index of blob; so must the indices {k, ..., k + size - 1}. {{Endianness}} must be an endianness object.
 
-Blob-uint-ref retrieves the exact integer corresponding to the unsigned representation of size size and specified by endianness at indices {k, ..., k + size - 1}.
+{{Blob-uint-ref}} retrieves the exact integer corresponding to the unsigned representation of size size and specified by endianness at indices {k, ..., k + size - 1}.
 
-Blob-sint-ref retrieves the exact integer corresponding to the two's complement representation of size size and specified by endianness at indices {k, ..., k + size - 1}.
+{{Blob-sint-ref}} retrieves the exact integer corresponding to the two's complement representation of size size and specified by {{endianness}} at indices {k, ..., k + size - 1}.
 
-For blob-uint-set!, n must be an exact integer in the interval [0, (256^size)-1]. Blob-uint-set! stores the unsigned representation of size size and specified by endianness into the blob at indices {k, ..., k + size - 1}.
+For {{blob-uint-set!}}, n must be an exact integer in the interval [0, (256^size)-1]. Blob-uint-set! stores the unsigned representation of size size and specified by endianness into the blob at indices {k, ..., k + size - 1}.
 
-For blob-uint-set!, n must be an exact integer in the interval [-256^(size-1), (256^(size-1))-1]. Blob-sint-set! stores the two's complement representation of size size and specified by endianness into the blob at indices {k, ..., k + size - 1}.
+For {{blob-uint-set!}}, n must be an exact integer in the interval [-256^(size-1), (256^(size-1))-1]. Blob-sint-set! stores the two's complement representation of size size and specified by endianness into the blob at indices {k, ..., k + size - 1}.
 
 <procedure>(blob-u16-ref endianness blob k)</procedure>
 
