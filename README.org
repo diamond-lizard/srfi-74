@@ -200,6 +200,7 @@ The test suite doubles as a source of examples.
  * SRFI 66 (Octet Vectors)
 ** Authors
  * Michael Sperber
+ * Ported to Chicken 5 by Sergey Goldgaber
 ** Copyright
 Copyright (C) Michael Sperber (2005). All Rights Reserved.
 
