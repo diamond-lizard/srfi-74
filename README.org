@@ -190,8 +190,6 @@ U8-list->blob returns a newly allocated blob whose elements are the elements of 
 Size must be a positive exact integer. Endianness must be an endianness object.
 
 These convert between lists of integers and their consecutive representations according to size and endianness in blobs in the same way as blob->u8-list, blob->s8-list, u8-list->blob, and s8-list->blob do for one-octet representations.
-** Reference Implementation
-This reference implementation makes use of SRFI 23 (Error reporting mechanism), SRFI 26 (Notation for Specializing Parameters without Currying), SRFI 60 (Integers as Bits), and SRFI 66 (Octet Vectors) .
 ** Examples
 The [[https://srfi.schemers.org/srfi-74/example.scm][test suite]] doubles as a source of examples.
 ** References
