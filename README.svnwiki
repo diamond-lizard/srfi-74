@@ -34,15 +34,15 @@ This means that number of return values and the return values are unspecified. H
 
 <syntax>(endianness native)</syntax>
 
-(endianness big) and (endianness little) evaluate to two distinct and unique objects representing an endianness. The native endianness evaluates to the endianness of the underlying machine architecture, and must be eq? to either (endianness big) or (endianness little).
+{{(endianness big)}} and {{(endianness little)}} evaluate to two distinct and unique objects representing an {{endianness}}. The native {{endianness}} evaluates to the endianness of the underlying machine architecture, and must be {{eq?}} to either {{(endianness big)}} or {{(endianness little)}}.
 
 <procedure>(blob? obj)</procedure>
 
-Returns #t if obj is a blob, otherwise returns #f.
+Returns {{#t}} if obj is a blob, otherwise returns {{#f}}.
 
 <procedure>(make-blob k)</procedure>
 
-Returns a newly allocated blob of k octets, all of them 0.
+Returns a newly allocated blob of {{k}} octets, all of them 0.
 
 <procedure>(blob-length blob)</procedure>
 
@@ -52,7 +52,7 @@ Returns the number of octets in blob as an exact integer.
 
 <procedure>(blob-s8-ref blob k)</procedure>
 
-K must be a valid index of blob.
+{{K}} must be a valid index of {{blob}}.
 
 Blob-u8-ref returns the octet at index k of blob.
 
@@ -157,7 +157,7 @@ The procedures with native in their names employ the native endianness, and only
 
 <procedure>(blob=? blob-1 blob-2)</procedure>
 
-Returns #t if blob-1 and blob-2 are equal---that is, if they have the same length and equal octets at all valid indices.
+Returns {{#t}} if blob-1 and blob-2 are equal---that is, if they have the same length and equal octets at all valid indices.
 
 <procedure>(blob-copy! source source-start target target-start n)</procedure>
 
