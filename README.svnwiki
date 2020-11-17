@@ -106,7 +106,7 @@ For {{blob-uint-set!}}, {{n}} must be an exact integer in the interval [-256^(si
 
 K must be a valid index of blob; so must the index k+ 1. Endianness must be an endianness object.
 
-These retrieve and set two-octet representations of numbers at indices {{k}} and k+1, according to the endianness specified by endianness. The procedures with u16 in their names deal with the unsigned representation, those with s16 with the two's complement representation.
+These retrieve and set two-octet representations of numbers at indices {{k}} and k+1, according to the endianness specified by {{endianness}}. The procedures with u16 in their names deal with the unsigned representation, those with s16 with the two's complement representation.
 
 The procedures with native in their names employ the native endianness, and only work at aligned indices: {{k}} must be a multiple of 2. It is an error to use them at non-aligned indices.
 
@@ -126,9 +126,9 @@ The procedures with native in their names employ the native endianness, and only
 
 <procedure>(blob-s32-native-set! blob k n)</procedure>
 
-K must be a valid index of blob; so must the indices {k, ..., k+ 3}. Endianness must be an endianness object.
+K must be a valid index of blob; so must the indices {k, ..., k+ 3}. {{Endianness}} must be an {{endianness}} object.
 
-These retrieve and set four-octet representations of numbers at indices {k, ..., k+ 3}, according to the endianness specified by endianness. The procedures with u32 in their names deal with the unsigned representation, those with s32 with the two's complement representation.
+These retrieve and set four-octet representations of numbers at indices {k, ..., k+ 3}, according to the endianness specified by {{endianness}}. The procedures with u32 in their names deal with the unsigned representation, those with s32 with the two's complement representation.
 
 The procedures with native in their names employ the native endianness, and only work at aligned indices: {{k}} must be a multiple of 4. It is an error to use them at non-aligned indices.
 
